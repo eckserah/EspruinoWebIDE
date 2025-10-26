@@ -47,6 +47,18 @@
 
   <input type="file" id="fileInput">
 
+    <script>
+        fileInput.addEventListener('change', (event) => {
+            const selectedFiles = event.target.files;
+            if (selectedFiles.length > 0) {
+                const firstFile = selectedFiles[0];
+                console.log('Selected file:', firstFile.name);
+                debugger;
+                // You can now process the file, e.g., read its content
+            }
+        });
+    </script>
+
     <script src="js/libs/jquery-1.11.0.js"></script>
     <script src="js/libs/jquery-ui-1.10.1.custom.js"></script>
     <script src="js/libs/jquery.ui.touch-punch.min.js"></script>
