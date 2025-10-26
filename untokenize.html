@@ -48,6 +48,11 @@
   <input type="file" id="fileInput">
   <pre id="untokenizedFile"></pre>
     <script>
+        function arrayBufferToString(buffer, encoding = 'utf-8') {
+            const decoder = new TextDecoder(encoding);
+            return decoder.decode(buffer);
+        }
+
         fileInput.addEventListener('change', (event) => {
             const selectedFiles = event.target.files;
             if (selectedFiles.length > 0) {
@@ -58,11 +63,12 @@
                 reader.onload = (e) => {
                     const fileContent = e.target.result; // The content of the file as a string
                     console.log(fileContent);
+                    let strBuffer = arrayBufferToString(fileContent);
                     let untokenizedFile = Espruino.Plugins.Pretokenise.untokenise(fileContent);
-                    $('untokenizedFile').text(untokenizedFile);
+                    $('#untokenizedFile').text(untokenizedFile);
                 };
 
-                reader.readAsText(firstFile); // Read the file content as text
+                reader.readAsArrayBuffer(firstFile); // Read the file content as text
 
                 debugger;
                 // You can now process the file, e.g., read its content
