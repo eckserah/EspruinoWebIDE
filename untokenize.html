@@ -46,7 +46,7 @@
 <body>
 
   <input type="file" id="fileInput">
-
+  <pre id="untokenizedFile"></pre>
     <script>
         fileInput.addEventListener('change', (event) => {
             const selectedFiles = event.target.files;
@@ -58,6 +58,8 @@
                 reader.onload = (e) => {
                     const fileContent = e.target.result; // The content of the file as a string
                     console.log(fileContent);
+                    let untokenizedFile = Espruino.Plugins.Pretokenise.untokenise(fileContent);
+                    document.getElementById('untokenizedFile').innerText(untokenizedFile);
                 };
 
                 reader.readAsText(firstFile); // Read the file content as text
