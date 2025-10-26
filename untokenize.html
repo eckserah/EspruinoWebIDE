@@ -59,7 +59,7 @@
                     const fileContent = e.target.result; // The content of the file as a string
                     console.log(fileContent);
                     let untokenizedFile = Espruino.Plugins.Pretokenise.untokenise(fileContent);
-                    document.getElementById('untokenizedFile').innerHTML(untokenizedFile);
+                    $('untokenizedFile').text(untokenizedFile);
                 };
 
                 reader.readAsText(firstFile); // Read the file content as text
