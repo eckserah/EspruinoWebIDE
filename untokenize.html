@@ -53,6 +53,15 @@
             if (selectedFiles.length > 0) {
                 const firstFile = selectedFiles[0];
                 console.log('Selected file:', firstFile.name);
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    const fileContent = e.target.result; // The content of the file as a string
+                    console.log(fileContent);
+                };
+
+                reader.readAsText(firstFile); // Read the file content as text
+
                 debugger;
                 // You can now process the file, e.g., read its content
             }
