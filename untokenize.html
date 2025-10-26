@@ -64,7 +64,7 @@
                     const fileContent = e.target.result; // The content of the file as a string
                     console.log(fileContent);
                     let strBuffer = arrayBufferToString(fileContent);
-                    let untokenizedFile = Espruino.Plugins.Pretokenise.untokenise(fileContent);
+                    let untokenizedFile = Espruino.Plugins.Pretokenise.untokenise(strBuffer);
                     $('#untokenizedFile').text(untokenizedFile);
                 };
 
